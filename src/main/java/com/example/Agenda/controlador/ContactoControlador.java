@@ -22,10 +22,10 @@ public class ContactoControlador {
         modelo.addAttribute("Contacto", contactos);
         return "index";
     }
-        @GetMapping ("/nuevo")
+        @GetMapping ("/registros")
         public String mostrarFormularioDeRegistrarContacto(Model modelo) {
             modelo.addAttribute("Contacto",new contacto());
-            return "nuevo";
+            return "registros";
         }
        @PostMapping("/save")
         public String guardarContacto(@Validated contacto Contacto, BindingResult bindingResult,
@@ -33,7 +33,7 @@ public class ContactoControlador {
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("Contacto", Contacto);
-            return "nuevo";
+            return "registros";
 
         }
         contactoServicio.guardarContacto(Contacto);
